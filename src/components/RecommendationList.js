@@ -1,7 +1,21 @@
 import React from "react";
+import RecommendationButton from "./RecommendationButton";
 
 const RecommendationList = () => {
-  return <div>RecommendationList</div>;
+  const RecommendationList = [
+    "All",
+    "Cooking",
+    "Tamil Cinema",
+    "GameShows",
+    "Melodies",
+  ];
+  return (
+    <div className="flex gap-3">
+      {RecommendationList.map((recommendationItem) => {
+        return <RecommendationButton info={recommendationItem} />;
+      })}
+    </div>
+  );
 };
 
 export default RecommendationList;

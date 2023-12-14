@@ -1,6 +1,13 @@
+import { useSelector } from "react-redux";
 import { sideBarElements } from "../constants";
 
 const Sidebar = () => {
+  const menuOpenStatus = useSelector((store) => store.app.isMenuOpen);
+
+  //early return
+  if (!menuOpenStatus) {
+    return null;
+  }
   return (
     <div>
       <ul className="flex flex-col gap-6 m-2">
