@@ -1,18 +1,12 @@
 import React from "react";
 import RecommendationButton from "./RecommendationButton";
+import { RecommendationListData } from "../constants";
 
 const RecommendationList = () => {
-  const RecommendationList = [
-    "All",
-    "Cooking",
-    "Tamil Cinema",
-    "GameShows",
-    "Melodies",
-  ];
   return (
-    <div className="flex gap-3">
-      {RecommendationList.map((recommendationItem) => {
-        return <RecommendationButton info={recommendationItem} />;
+    <div className="flex gap-3 m-4">
+      {RecommendationListData.map((recommendationItem, i) => {
+        return <RecommendationButton info={recommendationItem} key={i} />;
       })}
     </div>
   );
