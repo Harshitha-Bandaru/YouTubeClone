@@ -4,7 +4,13 @@ const VideoCard = ({ info }) => {
   return (
     <div className="w-[365px]">
       <img
-        src={thumbnails.medium.url}
+        src={
+          thumbnails.maxres?.url ||
+          thumbnails.high.url ||
+          thumbnails.standard.url ||
+          thumbnails.medium.url ||
+          thumbnails.default.url
+        }
         alt="video-img"
         width={365}
         className="rounded-2xl"

@@ -18,9 +18,7 @@ const Header = () => {
           className="w-10 h-6 mt-3 ml-5 mr-3 cursor-pointer"
           onClick={handleToggleMenu}
         />
-        <a href="/">
-          <img src={Logo} alt="youtube-logo" className="w-28 h-12" />
-        </a>
+        <img src={Logo} alt="youtube-logo" className="w-28 h-12" />
       </div>
       <div className="flex mt-3">
         <input

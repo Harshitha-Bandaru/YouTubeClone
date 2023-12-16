@@ -6,7 +6,7 @@ import { LuPlaySquare } from "react-icons/lu";
 const YOUTUBE_API_KEY = "AIzaSyAbxWrEBw_Ga29DRQtiu1kFtU2764OWdIU";
 
 export const sideBarElements = [
-  { name: "Home", icon: <GoHome /> },
+  { name: "Home", icon: <GoHome />, link: "/" },
   { name: "Shorts", icon: <SiYoutubeshorts /> },
   { name: "Subscriptions", icon: <MdOutlineSubscriptions /> },
   { name: "You", icon: <LuPlaySquare /> },
@@ -21,5 +21,5 @@ export const RecommendationListData = [
 ];
 
 export const YOUTUBE_VIDEO_API_URL =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&maxResults=50&key=" +
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&maxResults=50&key=" +
   YOUTUBE_API_KEY;

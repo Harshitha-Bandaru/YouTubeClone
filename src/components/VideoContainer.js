@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { YOUTUBE_VIDEO_API_URL } from "../constants";
 import VideoCard from "./VideoCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videoData, setVideoData] = useState([]);
@@ -25,7 +25,9 @@ const VideoContainer = () => {
   ) : (
     <div className="flex flex-wrap gap-4 m-4">
       {videoData?.map((video) => (
-        <VideoCard info={video} />
+        <Link to={`/watch?v=${video.id}`} key={video.id}>
+          <VideoCard info={video} />
+        </Link>
       ))}
     </div>
   );
