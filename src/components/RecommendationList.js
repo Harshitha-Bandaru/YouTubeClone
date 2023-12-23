@@ -1,4 +1,3 @@
-import React from "react";
 import RecommendationButton from "./RecommendationButton";
 import { RecommendationListData } from "../constants";
 

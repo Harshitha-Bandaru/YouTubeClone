@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API_URL } from "../constants";
 import SearchResultVideoCard from "./SearchResultVideoCard";
 import { Link } from "react-router-dom";

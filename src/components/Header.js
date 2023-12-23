@@ -6,7 +6,7 @@ import Logo from "../assets/logo.png";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_AUTOCOMPLETE_API_URL } from "../constants";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
@@ -25,7 +25,7 @@ const Header = () => {
     setSuggestions(json[1]);
   };
 
-  const nav = useNavigate();
+  // const nav = useNavigate();
   const dispatch = useDispatch();
   const handleToggleMenu = () => {
     dispatch(toggleMenu());
@@ -72,7 +72,6 @@ const Header = () => {
                       onClick={() => {
                         console.log("onclick called");
                         // nav(`/results?search_query=${item}`);
-
                         setShowSuggestions(false);
                       }}
                     >
