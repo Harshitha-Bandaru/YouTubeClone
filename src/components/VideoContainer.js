@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
   const [videoData, setVideoData] = useState([]);
-  console.log(videoData);
+  // console.log(videoData);
 
   useEffect(() => {
     getVideoData();
@@ -16,7 +16,7 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_VIDEO_API_URL);
     // console.log(data);
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setVideoData(json.items);
   };
 
