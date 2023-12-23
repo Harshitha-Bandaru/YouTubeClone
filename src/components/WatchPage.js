@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
+import CommentsContainer from "./CommentsContainer";
 
 const WatchPage = () => {
   const params = new URLSearchParams(window.location.search);
@@ -14,7 +15,7 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col gap-6 mx-20">
       <iframe
         width="620"
         height="315"
@@ -25,6 +26,7 @@ const WatchPage = () => {
         allowFullScreen
         className="rounded-xl"
       ></iframe>
+      <CommentsContainer />
     </div>
   );
 };

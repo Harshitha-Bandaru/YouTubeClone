@@ -20,7 +20,7 @@ const VideoContainer = () => {
     setVideoData(json.items);
   };
 
-  return videoData.length === 0 ? (
+  return videoData?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="flex flex-wrap gap-4 m-4">
