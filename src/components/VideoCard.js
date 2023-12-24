@@ -1,6 +1,10 @@
+import convertViews from "../utils/convertViews";
+
 const VideoCard = ({ info }) => {
   const { publishedAt, channelTitle, thumbnails, localized } = info?.snippet;
   const { viewCount } = info?.statistics;
+  const convertedViews = convertViews(viewCount);
+  // console.log("views", convertedViews);
   return (
     <div className="w-[365px]">
       <img
@@ -15,10 +19,13 @@ const VideoCard = ({ info }) => {
         width={365}
         className="rounded-2xl"
       />
-      <p className="break-words">{localized?.title}</p>
-      <h2>{channelTitle}</h2>
+      <p className="break-words font-semibold text-base mt-2">
+        {localized?.title}
+      </p>
+      <h2 className="text-[#606060]">{channelTitle}</h2>
       <h2>
-        {viewCount} . {publishedAt}
+        <span className="text-[#606060]">{convertedViews} views</span>
+        <span className="text-[#606060]"> . {publishedAt}</span>
       </h2>
     </div>
   );

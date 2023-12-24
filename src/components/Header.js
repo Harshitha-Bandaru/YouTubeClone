@@ -3,30 +3,41 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaUser } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 import Logo from "../assets/logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_AUTOCOMPLETE_API_URL } from "../constants";
 import { Link } from "react-router-dom";
+import { addToCache } from "../utils/cacheSlice";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const cachedSearchResults = useSelector((store) => store.cache);
 
   useEffect(() => {
-    const timer = setTimeout(() => fetchAutocompleteSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (cachedSearchResults[searchText]) {
+        setSuggestions(cachedSearchResults[searchText]);
+      } else {
+        fetchAutocompleteSuggestions();
+      }
+    }, 200);
     return () => clearTimeout(timer);
   }, [searchText]);
+
+  const dispatch = useDispatch();
 
   const fetchAutocompleteSuggestions = async () => {
     const data = await fetch(YOUTUBE_AUTOCOMPLETE_API_URL + searchText);
     const json = await data.json();
     console.log("first", json[1]);
+    dispatch(addToCache({ [searchText]: json[1] }));
     setSuggestions(json[1]);
   };
 
   // const nav = useNavigate();
-  const dispatch = useDispatch();
+
   const handleToggleMenu = () => {
     dispatch(toggleMenu());
   };
@@ -66,7 +77,7 @@ const Header = () => {
             <ul className="absolute w-[600px] bg-white px-4 py-5 shadow-xl rounded-2xl border border-gray-100">
               {suggestions?.map((item) => {
                 return (
-                  <Link to={`/results?search_query=${item}`}>
+                  <Link to={`/results?search_query=${item}`} key={item}>
                     <li
                       className="flex items-center gap-2 cursor-pointer hover:bg-gray-200"
                       onClick={() => {
