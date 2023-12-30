@@ -3,6 +3,7 @@ import { YOUTUBE_VIDEO_API_URL } from "../constants";
 import VideoCard from "./VideoCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import RecommendationList from "./RecommendationList";
 
 const VideoContainer = () => {
   const [videoData, setVideoData] = useState([]);
@@ -23,12 +24,15 @@ const VideoContainer = () => {
   return videoData?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="flex flex-wrap gap-4 m-4">
-      {videoData?.map((video) => (
-        <Link to={`/watch?v=${video.id}`} key={video.id}>
-          <VideoCard info={video} />
-        </Link>
-      ))}
+    <div className="flex flex-col">
+      <RecommendationList />
+      <div className="flex flex-wrap gap-4 m-4">
+        {videoData?.map((video) => (
+          <Link to={`/watch?v=${video.id}`} key={video.id}>
+            <VideoCard info={video} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

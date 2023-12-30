@@ -31,7 +31,7 @@ const Header = () => {
   const fetchAutocompleteSuggestions = async () => {
     const data = await fetch(YOUTUBE_AUTOCOMPLETE_API_URL + searchText);
     const json = await data.json();
-    console.log("first", json[1]);
+    // console.log("first", json[1]);
     dispatch(addToCache({ [searchText]: json[1] }));
     setSuggestions(json[1]);
   };

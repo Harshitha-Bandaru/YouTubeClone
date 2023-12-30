@@ -10,8 +10,8 @@ const cacheSlice = createSlice({
       if (length >= 100) {
         delete state[Object.keys(state)[0]];
       }
-      console.log("length", length);
-      console.log("payload", action.payload);
+      // console.log("length", length);
+      // console.log("payload", action.payload);
       // const newObj = { ...state, ...action.payload };
       // state = newObj;
       Object.assign(state, action.payload);
